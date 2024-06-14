@@ -6,12 +6,14 @@ import 'package:chamber_of_commerce/pages/user/UseFullAddress.dart';
 import 'package:chamber_of_commerce/widgets/AboutUs.dart';
 import 'package:chamber_of_commerce/widgets/Almanac_Category.dart';
 import 'package:chamber_of_commerce/widgets/BottomNavBar.dart';
+import 'package:chamber_of_commerce/widgets/CompanyDescription.dart';
 import 'package:chamber_of_commerce/widgets/CustomBottomNavBar.dart';
 import 'package:chamber_of_commerce/widgets/GridScreen.dart';
 import 'package:chamber_of_commerce/widgets/SearchField.dart';
 import 'package:chamber_of_commerce/widgets/SearchFieldAlmanac.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -43,19 +45,26 @@ class Almanac extends StatelessWidget {
      "assets/images/almanac_lists/adv_logo/tsedey.jpg"
   ];
   //logo and name of the company that display in a grid
-  //  List <String,dynamic> data = [
-// {
-//  "name": "Tsedey Bank ",
-//      "logo": "assets/images/almanac_lists/bank_logos/14.jpg",
-// },
-// {
-//      "name": "Nib Int. Bank S.C.",
-//      "logo": ""
-// },
-// {  "name": "Awash Bank S.C.",
-//      "logo": "assets/images/almanac_lists/bank_logos/1.png",
-//      },
-//    ];
+  final List<Map<String, String>> data = [
+{
+ "name": "Tsedey Bank ",
+     "logo": "assets/images/almanac_lists/bank_logos/14.jpg",
+},
+{
+     "name": "Nib Int. Bank S.C.",
+     "logo":  "assets/images/almanac_lists/adv_logo/nib.jpg"
+},
+{  "name": "Awash Bank S.C.",
+     "logo": "assets/images/almanac_lists/bank_logos/1.png",
+     },
+     {"name":"Kacha Digital Financial Services SC",
+     "logo": "assets/images/almanac_lists/adv_logo/kacha.jpg"
+     },
+     {
+      "name":"Ethio-Life & General Insurance S.C.",
+      "logo":"assets/images/almanac_lists/adv_logo/ethio.jpg",
+     }
+   ];
 
 
 
@@ -192,7 +201,7 @@ class Almanac extends StatelessWidget {
             padding: const EdgeInsets.only(top: 4.0,left: 20,right: 20,bottom: 16),
             child: Container(
                width: MediaQuery.of(context).size.width * 0.9,
-              height: 126,
+              height: 220,
               decoration: BoxDecoration(
               
                 color: Color.fromARGB(255, 255, 255, 255),
@@ -209,21 +218,60 @@ class Almanac extends StatelessWidget {
             //   return buildImage(urlImage,index);
             //  }, options: CarouselOptions(height: 100,autoPlay: true))
             
-           GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3, // Change to adjust the number of columns
-        crossAxisSpacing: 10.0, // Spacing between columns
-        mainAxisSpacing: 20.0, // Spacing between rows
-        childAspectRatio: 1.2, // Adjust aspect ratio for desired layout
-      ),
-      itemCount: slideImages.length,
-      itemBuilder: (context, index) {
-        // final Map<dynamic, dynamic> businessData = slideImages[index];
-        // final String icon = businessData['logo'].toString();
-        // Future<String> imageUrlFuture = storeImageInFirebase(icon);
-        // final String name = businessData["Account Name"].toString();
-      // return
-      }),
+           Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Container(
+              height: 300,
+               child: GridView.builder(
+                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                       crossAxisCount: 3, // Change to adjust the number of columns
+                       crossAxisSpacing: 10.0, // Spacing between columns
+                       mainAxisSpacing: 20.0, // Spacing between rows
+                       childAspectRatio: 1.2, // Adjust aspect ratio for desired layout
+                     ),
+                     itemCount: slideImages.length,
+                     itemBuilder: (context, index) {
+                       final Map<dynamic, dynamic> businessData = data[index];
+                       final String icon = businessData['logo'].toString();
+                       final String name = businessData['name'].toString();
+                       // Future<String> imageUrlFuture = storeImageInFirebase(icon);
+                       // final String name = businessData["Account Name"].toString();
+                    return GestureDetector(
+                       onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CompanyDescription(detail: businessData)),
+                       ),
+                       child: Column(
+              children: [
+                Container(
+                  width: 60.0,
+                  height: 60.0,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Color.fromARGB(255, 229, 234, 232),
+                    ),
+                    // ... other decoration for the container
+                  ),
+                  child: Image.asset(icon)
+                ),
+                // SizedBox(width: 20.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    name,
+                    style: TextStyle(fontSize: 12),
+                    textAlign: TextAlign.left,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+                       ),
+                     );
+                     }),
+             ),
+           ),
 
 
 
