@@ -51,19 +51,7 @@ class _ContactTemepleteState extends State<ContactTemeplete> {
                                      ),
                                    SizedBox(width: 10,),
 
-                                    Container(
-                                     // width: 20,
-                                     // height: 20,
-                                     decoration: BoxDecoration(
-                           
-                               color: Color.fromARGB(255, 255, 255, 255),
-                                              
-                                              borderRadius:BorderRadius.circular(999), // Set border width
-                                              
-                                                ),
-                                child:   Text(tel,softWrap: true,overflow: TextOverflow.ellipsis,),
-                                      
-                                      ),
+                                    Text(tel,softWrap: true,overflow: TextOverflow.ellipsis,),
                                 
                                       // SvgPicture.asset('assets/images/vector1.svg',width: 10,height: 10,),
 

@@ -14,8 +14,6 @@ import 'package:chamber_of_commerce/widgets/GridSingle.dart';
 import 'package:chamber_of_commerce/widgets/SearchField.dart';
 import 'package:chamber_of_commerce/widgets/SearchFieldBusiness.dart';
 import 'package:chamber_of_commerce/widgets/business_top_list.dart';
-import 'package:chamber_of_commerce/widgets/expandedPanel%20_usefull_address.dart';
-import 'package:chamber_of_commerce/widgets/expandedPanel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,22 +33,7 @@ class UseFullAddressBusiness extends StatefulWidget {
 class _UseFullAddressBusinessState extends State<UseFullAddressBusiness> {
    Stream<DatabaseEvent>? _userStream;
   // final Map data = widget.businessCompanyProfile[""];
-   final List<dynamic> data = [
-    
-     "High Office",
-     "Ministry",
-     "Addis Ababa City Administration",
-     "Corporation and Enterprise",
-     "Agency",
-     "Authority",
-     "Institutes",
-     "Business Associations",
-     "Deplomatic Mission in Ethiopia",
-     "Ethiopian Deplomatic Mission Ab",
-     "International and Regional Orga",
-     "Regional Chamber of Commerce",
-
-   ];
+   
   @override
   void initState() {
     super.initState();
@@ -249,100 +232,102 @@ class _UseFullAddressBusinessState extends State<UseFullAddressBusiness> {
      
        
         
-         return  ExpandedPanelUseFullAddress(data:data ,);
-         
-        //  ListView.builder(
+         return ListView.builder(
           
-        //  itemCount: data.length,
-        //  itemBuilder: (context, index) {
-        //    final businessData = data[index];
-        //    final name = businessData['Institution'];
-        //    final email = businessData['Email'];
-        //    final String tel = businessData['Tel'].toString();
-        //    final String mobile = businessData['Mobile'];
-        //    final String website = businessData['Website'];
-        //    final category = businessData['Category'];
+         itemCount: data.length,
+         itemBuilder: (context, index) {
+           final businessData = data[index];
+           final name = businessData['Institution'];
+           final email = businessData['Email'];
+           final String tel = businessData['Tel'].toString();
+           final String mobile = businessData['Mobile'];
+           final String website = businessData['Website'];
+           final category = businessData['Category'];
            
          
-        //    // Extract business information based on your data structure
-        //    return Padding(
+           // Extract business information based on your data structure
+           return Padding(
             
-        //      padding: const EdgeInsets.only(left: 20.0,right: 20,bottom: 16),
-        //      child:
-        //          GestureDetector(
-        //           onTap: () {
-        //     // Navigator.push(
-        //     //   context,
-        //     //   MaterialPageRoute(
-        //     //     builder: (context) => CompanyDetail(data: businessData),
-        //     //   ),
-        //     // );
-        //   },
+             padding: const EdgeInsets.only(left: 20.0,right: 20,bottom: 16),
+             child:
+                 GestureDetector(
+                  onTap: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => CompanyDetail(data: businessData),
+            //   ),
+            // );
+          },
           
-        //            child: Container(
+                   child: Container(
                     
-        //               decoration: BoxDecoration(
+                      decoration: BoxDecoration(
                        
-        //                    color: const Color.fromARGB(255,229,234,232),
+                           color: const Color.fromARGB(255,229,234,232),
                    
-        //            borderRadius:BorderRadius.circular(20), // Set border width
+                   borderRadius:BorderRadius.circular(20), // Set border width
                    
-        //              ),
-        //              // color: const Color.fromARGB(255,229,234,232),
-        //              //  width: MediaQuery.of(context).size.width * 0.8,
-        //              //  height: 230,
-        //              child:  Padding(padding: EdgeInsets.all(16),
-        //              child: Column(children: [
-        //                Row(
-        //                  children: [
+                     ),
+                     // color: const Color.fromARGB(255,229,234,232),
+                     //  width: MediaQuery.of(context).size.width * 0.8,
+                     //  height: 230,
+                     child:  Padding(padding: EdgeInsets.all(16),
+                     child: Column(children: [
+                       Row(
+                         children: [
                           
-        //                    Expanded(child: Text(name,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 16), softWrap: true,overflow: TextOverflow.ellipsis,textAlign: TextAlign.left)),
-        //                  ],
-        //                ),
-        //                if(tel=='' && mobile==''&&email==''&&website=='')
-        //                 ContactTemeplete(),
-        //                if(tel=='' && mobile==''&&email==''&&website!='')
-        //                 ContactTemeplete(website: website,),
-        //                if(tel=='' && mobile==''&&email!=''&&website=='')
-        //                 ContactTemeplete(email: email,),
-        //                if(tel=='' && mobile!=''&&email==''&&website=='')
-        //                 ContactTemeplete(mobile: mobile,),
-        //                if(tel!='' && mobile==''&&email==''&&website=='')
-        //                 ContactTemeplete(tel: tel),
-        //                if(tel!='' && mobile==''&&email==''&&website!='')
-        //                 ContactTemeplete(tel: tel,website: website,),
-        //                if(tel!='' && mobile==''&&email!=''&&website=='')
-        //                 ContactTemeplete(tel: tel,email: email,),
-        //                if(tel!='' && mobile==''&&email!=''&&website!='')
-        //                 ContactTemeplete(tel: tel,email: email),
-        //                if(tel!='' && mobile!=''&&email==''&&website=='')
-        //                 ContactTemeplete(tel: tel,mobile:mobile),
-        //                if(tel!='' && mobile!=''&&email==''&&website!='')
-        //                 ContactTemeplete(tel: tel,mobile:mobile,website: website,),
-        //                if(tel!='' && mobile!=''&&email!=''&&website!='')
-        //                 ContactTemeplete(tel: tel,mobile:mobile,email: email,website: website,),
-        //                if(tel=='' && mobile==''&&email!=''&&website!='')
-        //                 ContactTemeplete(email: email,website: website,),
-        //                if(tel=='' && mobile!=''&&email==''&&website!='')
-        //                 ContactTemeplete(mobile:mobile,website: website,),
-        //                if(tel=='' && mobile!=''&&email!=''&&website!='')
-        //                 ContactTemeplete(mobile:mobile,email: email,website: website,),
-        //                if(tel!='' && mobile==''&&email!=''&&website!='')
-        //                 ContactTemeplete(tel: tel,email: email,website: website,),
-        //                if(tel=='' && mobile!=''&&email==''&&website!='')
-        //                 ContactTemeplete(mobile:mobile,website: website,),
+                           Expanded(child: Text(name,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 16), softWrap: true,overflow: TextOverflow.ellipsis,textAlign: TextAlign.left)),
+                         ],
+                       ),
+                       if(tel=='' && mobile==''&&email==''&&website=='')
+                        ContactTemeplete(),
+                       if(tel=='' && mobile==''&&email==''&&website!='')
+                        ContactTemeplete(website: website,),
+                       if(tel=='' && mobile==''&&email!=''&&website=='')
+                        ContactTemeplete(email: email,),
+                       if(tel=='' && mobile!=''&&email==''&&website=='')
+                        ContactTemeplete(mobile: mobile,),
+                       if(tel!='' && mobile==''&&email==''&&website=='')
+                        ContactTemeplete(tel: tel),
+                       if(tel!='' && mobile==''&&email==''&&website!='')
+                        ContactTemeplete(tel: tel,website: website,),
+                       if(tel!='' && mobile==''&&email!=''&&website=='')
+                        ContactTemeplete(tel: tel,email: email,),
+                       if(tel!='' && mobile==''&&email!=''&&website!='')
+                        ContactTemeplete(tel: tel,email: email),
+                       if(tel!='' && mobile!=''&&email==''&&website=='')
+                        ContactTemeplete(tel: tel,mobile:mobile),
+                       if(tel!='' && mobile!=''&&email==''&&website!='')
+                        ContactTemeplete(tel: tel,mobile:mobile,website: website,),
+                       if(tel!='' && mobile!=''&&email!=''&&website!='')
+                        ContactTemeplete(tel: tel,mobile:mobile,email: email,website: website,),
+                       if(tel=='' && mobile==''&&email!=''&&website!='')
+                        ContactTemeplete(email: email,website: website,),
+                       if(tel=='' && mobile!=''&&email==''&&website!='')
+                        ContactTemeplete(mobile:mobile,website: website,),
+                       if(tel=='' && mobile!=''&&email!=''&&website!='')
+                        ContactTemeplete(mobile:mobile,email: email,website: website,),
+                       if(tel!='' && mobile==''&&email!=''&&website!='')
+                        ContactTemeplete(tel: tel,email: email,website: website,),
+                       if(tel=='' && mobile!=''&&email==''&&website!='')
+                        ContactTemeplete(mobile:mobile,website: website,),
                      
-               
-        //              ],))
+                    
+                   
+                       
+                 
+                    
+                     ],))
                       
-        //            ),
-        //          ),
+                   ),
+                 ),
               
            
-        //    );
-     
-        //  },
-        //    );
+           );
+       
+         },
+           );
        
     
 }

@@ -220,68 +220,95 @@ for (final element in filteredBusinesses) {
   Widget _buildListView() {
     return SizedBox(
       height: 300,
-      child: ListView.builder(
-        itemCount: uniqueBusinesses.length,
-        itemBuilder: (context, index) {
-          final Map<dynamic, dynamic> businessData = uniqueBusinesses[index];
-          final String icon = businessData['logo'].toString();
-          Future<String> imageUrlFuture = storeImageInFirebase(icon);
-          final String name = businessData["Account Name"].toString();
-      
-          return Container(
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CompanyDescription(detail: businessData)),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 80.0,
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                          color: Colors.black
-                    // ... decoration for the container
-                        ),
-                      ),
-                      child: FutureBuilder<String>(
-                        future: imageUrlFuture,
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            return Image.network(snapshot.data!);
-                          } else if (snapshot.hasError) {
-                            return Text('Error: ${snapshot.error}');
-                          }
-      
-                          // Display a loading indicator while waiting
-                          return CircularProgressIndicator();
-                        },
-                      ),),
-                    // ),
-                    SizedBox(width: 20.0),
-                    Expanded(
-                      child: Text(
-                        name,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.left,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+      child: 
+     GridView.count(
+  crossAxisCount: 3, // Adjust the number of columns as needed
+  childAspectRatio: 1.2, // Adjust the aspect ratio of each grid item (optional)
+  mainAxisSpacing: 20.0, // Adjust spacing between rows (optional)
+  crossAxisSpacing: 10.0, // Adjust spacing between columns (optional)
+  children: List.generate(uniqueBusinesses.length, (index) {
+    final Map<dynamic, dynamic> businessData = uniqueBusinesses[index];
+    final String icon = businessData['logo'].toString();
+    Future<String> imageUrlFuture = storeImageInFirebase(icon);
+    final String name = businessData["Account Name"].toString();
+
+    return Container(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CompanyDescription(detail: businessData),
             ),
           );
         },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+          child: Column( // Change Row to Column for vertical layout
+            children: [
+              if(icon == '')
+                 Container(
+                width: 60, // Allow full width for image container
+                height: 60.0,
+                decoration: BoxDecoration(
+                  // ... decoration for the container
+                  color: Colors.white,
+                  border: Border.all(
+                    color: Colors.black,
+                  ),
+                ),
+                // if()
+                child: Center(child: Text(name[0],style: TextStyle(fontSize: 24),))
+               
+              ),
+              if(icon !='')    
+              Container(
+                width: 60, // Allow full width for image container
+                height: 60.0,
+                decoration: BoxDecoration(
+                  // ... decoration for the container
+                  color: Colors.white,
+                  border: Border.all(
+                    color: Colors.black,
+                  ),
+                ),
+                // if()
+                child: FutureBuilder<String>(
+                  
+                  future: imageUrlFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Image.network(snapshot.data!);
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  },
+                ),
+              ),
+
+
+
+              SizedBox(height: 10.0), // Adjust spacing between image and text
+                Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  name,
+                  style: TextStyle(fontSize: 12),
+                  textAlign: TextAlign.left,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
+    );
+  }),
+),
+
     );
   }
 

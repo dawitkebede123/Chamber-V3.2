@@ -372,7 +372,7 @@ class _BusinessState extends State<Business> {
                              children: [
                                Container(
                                 decoration: BoxDecoration(
-                                             color:Color.fromARGB(255, 229, 234, 232) ,
+                                             color:const Color.fromARGB(255, 229, 234, 232) ,
                                              border: Border.all(
                                                color: Colors.white,
                                                width: 1.0,

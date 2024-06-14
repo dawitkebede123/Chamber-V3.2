@@ -480,28 +480,28 @@ for (var i = 0; i < items.length; i++) {
                  
                  
                      
-                      Row(
-                        children: [
-                         SizedBox(width: MediaQuery.of(context).size.width*0.68,),
-                          Container(
-                            decoration: BoxDecoration(
+                //       Row(
+                //         children: [
+                //          SizedBox(width: MediaQuery.of(context).size.width*0.68,),
+                //           Container(
+                //             decoration: BoxDecoration(
                          
-                         color: Color.fromARGB(255, 255, 255, 255),
+                //          color: Color.fromARGB(255, 255, 255, 255),
                  
-                 borderRadius:BorderRadius.circular(999), // Set border width
+                //  borderRadius:BorderRadius.circular(999), // Set border width
                  
-                   ),
-                            child: IconButton(
-                             icon: const Icon(Icons.share),
-                             onPressed: () async {
-                               // Replace with your actual sharing logic
-                               final text = 'Company Name: $name\n Phone: $tel\n Email: $email\n Website: $website\n mobile: $mobile\n';
-                               await Share.share(text);
-                             },
-                                      ),
-                          ),
-                        ],
-                      ),
+                //    ),
+                //             child: IconButton(
+                //              icon: const Icon(Icons.share),
+                //              onPressed: () async {
+                //                // Replace with your actual sharing logic
+                //                final text = 'Company Name: $name\n Phone: $tel\n Email: $email\n Website: $website\n mobile: $mobile\n';
+                //                await Share.share(text);
+                //              },
+                //                       ),
+                //           ),
+                //         ],
+                //       ),
                      // const Column(
                      //   children: [
                          

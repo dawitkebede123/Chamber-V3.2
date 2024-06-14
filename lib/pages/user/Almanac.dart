@@ -11,6 +11,7 @@ import 'package:chamber_of_commerce/widgets/CustomBottomNavBar.dart';
 import 'package:chamber_of_commerce/widgets/GridScreen.dart';
 import 'package:chamber_of_commerce/widgets/SearchField.dart';
 import 'package:chamber_of_commerce/widgets/SearchFieldAlmanac.dart';
+import 'package:chamber_of_commerce/widgets/logo_adv_list_almanac.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -199,88 +200,77 @@ class Almanac extends StatelessWidget {
           
           Padding(
             padding: const EdgeInsets.only(top: 4.0,left: 20,right: 20,bottom: 16),
-            child: Container(
-               width: MediaQuery.of(context).size.width * 0.9,
-              height: 220,
-              decoration: BoxDecoration(
-              
-                color: Color.fromARGB(255, 255, 255, 255),
-                 border:Border.all(
-                  color: const Color.fromARGB(255,229,234,232),
-                 ) ,
-                  borderRadius:BorderRadius.circular(20),),
-                  child: Column( 
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      //image carousel
-            //  CarouselSlider.builder(itemCount: slideImages.length, itemBuilder:(context,index,realIndex){
-            //   final urlImage = slideImages[index];
-            //   return buildImage(urlImage,index);
-            //  }, options: CarouselOptions(height: 100,autoPlay: true))
-            
-           Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: Container(
-              height: 300,
-               child: GridView.builder(
-                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                       crossAxisCount: 3, // Change to adjust the number of columns
-                       crossAxisSpacing: 10.0, // Spacing between columns
-                       mainAxisSpacing: 20.0, // Spacing between rows
-                       childAspectRatio: 1.2, // Adjust aspect ratio for desired layout
-                     ),
-                     itemCount: slideImages.length,
-                     itemBuilder: (context, index) {
-                       final Map<dynamic, dynamic> businessData = data[index];
-                       final String icon = businessData['logo'].toString();
-                       final String name = businessData['name'].toString();
-                       // Future<String> imageUrlFuture = storeImageInFirebase(icon);
-                       // final String name = businessData["Account Name"].toString();
-                    return GestureDetector(
-                       onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => CompanyDescription(detail: businessData)),
-                       ),
-                       child: Column(
+            child: Column( 
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 60.0,
-                  height: 60.0,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Color.fromARGB(255, 229, 234, 232),
-                    ),
-                    // ... other decoration for the container
-                  ),
-                  child: Image.asset(icon)
-                ),
-                // SizedBox(width: 20.0),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    name,
-                    style: TextStyle(fontSize: 12),
-                    textAlign: TextAlign.left,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
+                //image carousel
+                        //  CarouselSlider.builder(itemCount: slideImages.length, itemBuilder:(context,index,realIndex){
+                        //   final urlImage = slideImages[index];
+                        //   return buildImage(urlImage,index);
+                        //  }, options: CarouselOptions(height: 100,autoPlay: true))
+                        
+                       Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: Container(
+                          height: 200,
+                           child: Logo_Adv_List_almanac(index: 1)
+                          //  GridView.builder(
+                          //        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          //          crossAxisCount: 3, // Change to adjust the number of columns
+                          //          crossAxisSpacing: 10.0, // Spacing between columns
+                          //          mainAxisSpacing: 20.0, // Spacing between rows
+                          //          childAspectRatio: 1.2, // Adjust aspect ratio for desired layout
+                          //        ),
+                          //        itemCount: slideImages.length,
+                          //        itemBuilder: (context, index) {
+                          //          final Map<dynamic, dynamic> businessData = data[index];
+                          //          final String icon = businessData['logo'].toString();
+                          //          final String name = businessData['name'].toString();
+                          //          // Future<String> imageUrlFuture = storeImageInFirebase(icon);
+                          //          // final String name = businessData["Account Name"].toString();
+                          //       return GestureDetector(
+                          //          onTap: () => Navigator.push(
+                          // context,
+                          // MaterialPageRoute(builder: (context) => CompanyDescription(detail: businessData)),
+                          //          ),
+                          //          child: Column(
+                          // children: [
+                          //   Container(
+                          //     width: 60.0,
+                          //     height: 60.0,
+                          //     decoration: BoxDecoration(
+                          //       color: Colors.white,
+                          //       border: Border.all(
+                          //         color: Color.fromARGB(255, 229, 234, 232),
+                          //       ),
+                          //       // ... other decoration for the container
+                          //     ),
+                          //     child: Image.asset(icon)
+                          //   ),
+                          //   // SizedBox(width: 20.0),
+                          //   Padding(
+                          //     padding: const EdgeInsets.only(top: 8.0),
+                          //     child: Text(
+                          //       name,
+                          //       style: TextStyle(fontSize: 12),
+                          //       textAlign: TextAlign.left,
+                          //       maxLines: 1,
+                          //       overflow: TextOverflow.ellipsis,
+                          //     ),
+                          //   ),
+                          // ],
+                          //          ),
+                          //        );
+                          //        }),
+                         ),
                        ),
-                     );
-                     }),
-             ),
-           ),
-
-
-
-                  ],)
-                    // child:SvgPicture.asset('assets/images/Adv_slider.svg'),
-            ),
+            
+            
+            
+            ],),
           ),
-           Padding(
-                padding: const EdgeInsets.only(left: 20.0,right: 20,bottom: 16),
+           const Padding(
+                padding: EdgeInsets.only(left: 20.0,right: 20,bottom: 16),
                 child: SearchFieldAlmanac(),
               ),
         // SizedBox(height: 20,),
@@ -304,7 +294,7 @@ class Almanac extends StatelessWidget {
              child:  ListView(children:  [
               // Row(children: [
                 SizedBox(height: 20,),
-                 Text("About Financial Almanac", style: TextStyle(fontWeight: FontWeight.bold),),
+                 const Text("About Financial Almanac", style: TextStyle(fontWeight: FontWeight.bold),),
               
                Text("The financial landscape in Ethiopia is witnessing a significant transformation"),
                Row(
@@ -337,55 +327,59 @@ class Almanac extends StatelessWidget {
           
        Expanded(
          child: Padding(
+          
                      padding: const EdgeInsets.only(left: 20.0,right: 20,top: 0),
-                     child: GridView.builder(
-                             itemCount: categories.length,
-                             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                               crossAxisCount: 3, // Number of columns
-                               crossAxisSpacing: 20.0, // Spacing between columns
-                               mainAxisSpacing: 10.0, 
-                               childAspectRatio: 120/140 // Spacing between rows
-                             ),
-                             itemBuilder: (context, index) {
-                               final item = categories[index];
-                               return GestureDetector(
-                                 child: Column(
-                                   children: [
-                                     Container(
-                                      decoration: BoxDecoration(
-                                                   color:Color.fromARGB(255, 229, 234, 232) ,
-                                                   border: Border.all(
-                                                     color: Colors.white,
-                                                     width: 1.0,
+                     child: SizedBox(
+                      height: 30,
+                       child: GridView.builder(
+                               itemCount: categories.length,
+                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                 crossAxisCount: 3, // Number of columns
+                                 crossAxisSpacing: 20.0, // Spacing between columns
+                                 mainAxisSpacing: 10.0, 
+                                 childAspectRatio: 120/160 // Spacing between rows
+                               ),
+                               itemBuilder: (context, index) {
+                                 final item = categories[index];
+                                 return GestureDetector(
+                                   child: Column(
+                                     children: [
+                                       Container(
+                                        decoration: BoxDecoration(
+                                                     color:Color.fromARGB(255, 229, 234, 232) ,
+                                                     border: Border.all(
+                                                       color: Colors.white,
+                                                       width: 1.0,
+                                                     ),
+                                                     borderRadius: BorderRadius.circular(20.0),
                                                    ),
-                                                   borderRadius: BorderRadius.circular(20.0),
-                                                 ),
-                                      height: 94,
-                                      width: 94,
-                                       child: Center(
-                                         child:SvgPicture.asset(item)
+                                        height: 94,
+                                        width: 94,
+                                         child: Center(
+                                           child:SvgPicture.asset(item)
+                                         ),
                                        ),
-                                     ),
-                                     SizedBox(height: 5,),
-                                     Text(title[index],
-                                      style: TextStyle(fontSize: 12,color: Theme.of(context).colorScheme.primary),
-                                      textAlign: TextAlign.center,
-                                     maxLines: 2,
-                    overflow: TextOverflow.ellipsis,)
-                                   ],
-                                 ),
-                                                       onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    TransparentRoute(
-                 
-                  page:  AlmanacListing(index: index),
-                ),
-                                  );
-                                },
-                               );
-                             },
-                           ),
+                                       SizedBox(height: 5,),
+                                       Text(title[index],
+                                        style: TextStyle(fontSize: 12,color: Theme.of(context).colorScheme.primary),
+                                        textAlign: TextAlign.center,
+                                       maxLines: 2,
+                                           overflow: TextOverflow.ellipsis,)
+                                     ],
+                                   ),
+                                                         onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      TransparentRoute(
+                                        
+                                         page:  AlmanacListing(index: index),
+                                       ),
+                                    );
+                                  },
+                                 );
+                               },
+                             ),
+                     ),
                    ),
        ),
 
