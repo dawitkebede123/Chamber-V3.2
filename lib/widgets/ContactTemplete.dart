@@ -51,7 +51,7 @@ class _ContactTemepleteState extends State<ContactTemeplete> {
                                      ),
                                    SizedBox(width: 10,),
 
-                                    Text(tel,softWrap: true,overflow: TextOverflow.ellipsis,),
+                                    Text('011$tel',softWrap: true,overflow: TextOverflow.ellipsis,),
                                 
                                       // SvgPicture.asset('assets/images/vector1.svg',width: 10,height: 10,),
 
@@ -85,7 +85,7 @@ class _ContactTemepleteState extends State<ContactTemeplete> {
                                                          )),
                                    ),
                                    SizedBox(width: 10,),
-                                   Text(mobile,softWrap: true,overflow: TextOverflow.ellipsis,),
+                                   Text('0+$mobile',softWrap: true,overflow: TextOverflow.ellipsis,),
                                  ],
                                ),),
                              ],

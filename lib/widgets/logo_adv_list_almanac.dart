@@ -103,8 +103,9 @@ for (final element in filteredBusinesses) {
   return SizedBox(
     height:200,
     child: GridView.builder(
+      scrollDirection: Axis.horizontal,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3, // Change to adjust the number of columns
+        crossAxisCount: 2, // Change to adjust the number of columns
         crossAxisSpacing: 10.0, // Spacing between columns
         mainAxisSpacing: 20.0, // Spacing between rows
         childAspectRatio: 1.2, // Adjust aspect ratio for desired layout

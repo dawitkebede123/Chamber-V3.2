@@ -18,12 +18,15 @@ import 'package:chamber_of_commerce/widgets/TopNav.dart';
 import 'package:chamber_of_commerce/widgets/expandedPanel.dart';
 import 'package:chamber_of_commerce/widgets/filterResult.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 // import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Assuming you have initialized Firebase in your main function
-main() async {
+Future<void> main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('favorites');
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp( ChangeNotifierProvider(

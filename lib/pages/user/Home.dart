@@ -166,7 +166,7 @@ class _HomeState extends State<Home> {
             height:170 ,
             decoration:  BoxDecoration(
                color: Theme.of(context).colorScheme.primary,
-    image: DecorationImage(
+    image: const DecorationImage(
       image: AssetImage('assets/images/adv.png'),
       fit: BoxFit.cover,
     ),

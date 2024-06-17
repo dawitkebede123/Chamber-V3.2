@@ -55,6 +55,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: "^0.13.1"
+  hive_flutter: ^1.1.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -125,7 +126,6 @@ flutter:
     - assets/images/trash.svg
     - assets/images/awash_logo.svg
     - assets/images/phone_icon.svg
-    - assets/images/discovery_page_icons/banks.svg
     - assets/images/company_icon/company_awash.svg
     - assets/images/social_media_icons/email.svg
     - assets/images/social_media_icons/facebook.svg
@@ -157,56 +157,6 @@ flutter:
     - assets/images/business_lists/13.svg
     - assets/images/business_lists/14.svg
     - assets/images/almanac_lists/company_profile_image.svg
-    - assets/images/business_lists/sample/1.svg
-    - assets/images/business_lists/sample/2.svg
-    - assets/images/business_lists/sample/3.svg
-    - assets/images/business_lists/sample/4.svg
-    - assets/images/business_lists/sample/5.svg
-    - assets/images/business_lists/sample/6.svg
-    - assets/images/business_lists/sample/mengesha.svg
-    - assets/images/business_lists/sample/tomoca.svg
-    - assets/images/business_lists/adv_logo/1.jpg
-    - assets/images/business_lists/adv_logo/2.jpg
-    - assets/images/business_lists/adv_logo/3.jpg
-    - assets/images/business_lists/adv_logo/4.jpg
-    - assets/images/business_lists/adv_logo/5.jpg
-    - assets/images/business_lists/adv_logo/7.jpg
-    - assets/images/business_lists/adv_logo/8.jpg
-    - assets/images/business_lists/adv_logo/9.jpg
-    - assets/images/business_lists/adv_logo/10.jpg
-    - assets/images/business_lists/adv_logo/11.jpg
-    - assets/images/business_lists/adv_logo/12.jpg
-    - assets/images/business_lists/adv_logo/13.jpg
-    - assets/images/business_lists/adv_logo/14.jpg
-    - assets/images/business_lists/adv_logo/15.jpg
-    - assets/images/business_lists/adv_logo/16.jpg
-    - assets/images/business_lists/adv_logo/17.jpg
-    - assets/images/business_lists/adv_logo/18.jpg
-    - assets/images/business_lists/adv_logo/19.jpg
-    - assets/images/business_lists/adv_logo/20.jpg
-    - assets/images/business_lists/adv_logo/21.jpg
-    - assets/images/business_lists/adv_logo/22.jpg
-    - assets/images/business_lists/adv_logo/23.jpg
-    - assets/images/business_lists/adv_logo/24.jpg
-    - assets/images/business_lists/adv_logo/25.jpg
-    - assets/images/business_lists/adv_logo/26.jpg
-    - assets/images/business_lists/adv_logo/27.jpg
-    - assets/images/business_lists/adv_logo/28.jpg
-    - assets/images/business_lists/adv_logo/29.jpg
-    - assets/images/business_lists/adv_logo/30.jpg
-    - assets/images/business_lists/adv_logo/31.jpg
-    - assets/images/business_lists/adv_logo/32.jpg
-    - assets/images/business_lists/adv_logo/33.jpg
-    - assets/images/business_lists/adv_logo/34.jpg
-    - assets/images/business_lists/adv_logo/35.jpg
-    - assets/images/business_lists/adv_logo/36.jpg
-    - assets/images/business_lists/adv_logo/37.jpg
-    - assets/images/business_lists/adv_logo/38.jpg
-    - assets/images/business_lists/adv_logo/39.jpg
-    - assets/images/business_lists/adv_logo/40.jpg
-    - assets/images/business_lists/adv_logo/41.jpg
-    - assets/images/business_lists/adv_logo/42.jpg
-    - assets/images/business_lists/adv_logo/43.jpg
     - assets/images/almanac_lists/bank_logos/1.png
     - assets/images/almanac_lists/bank_logos/2.png
     - assets/images/almanac_lists/bank_logos/3.png
@@ -304,43 +254,6 @@ flutter:
     - assets/images/vector1.svg
     - assets/images/vector2.svg
     - assets/images/vector3.svg
-    - assets/video/business/1.mp4
-    - assets/video/business/ik.mp4
-    - assets/video/business/2.mp4
-    - assets/video/business/3.mp4
-    - assets/video/business/4.mp4
-    - assets/video/business/5.mp4
-    - assets/video/business/6.mp4
-    - assets/video/business/7.mp4
-    - assets/video/business/8.mp4
-    - assets/video/business/9.mp4
-    - assets/video/business/10.mp4
-    - assets/video/business/11.mp4
-    - assets/video/business/12.mp4
-    - assets/video/business/13.mp4
-    - assets/video/business/14.mp4
-    - assets/video/business/15.mp4
-    - assets/video/business/16.mp4
-    - assets/video/business/17.mp4
-    - assets/video/business/18.mp4
-    - assets/video/business/19.mp4
-    - assets/video/business/20.mp4
-    - assets/video/business/21.mp4
-    - assets/video/business/22.mp4
-    - assets/video/business/23.mp4
-    - assets/video/business/24.mp4
-    - assets/video/business/25.mp4
-    - assets/video/business/26.mp4
-    - assets/video/business/28.mp4
-    - assets/video/business/29.mp4
-    - assets/video/business/30.mp4
-    - assets/video/business/31.mp4
-    - assets/video/business/32.mp4
-    - assets/video/business/33.mp4
-    - assets/video/business/34.mp4
-    - assets/video/business/35.mp4
-    - assets/video/business/36.mp4
-    - assets/video/business/37.mp4
     - assets/sg.jpg
     - assets/president.jpg
     

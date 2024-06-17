@@ -29,24 +29,27 @@ class CenteredVerticalList extends StatelessWidget {
 
       child: Container(
 
-        width: 150,
-        height: 140,
+        width:MediaQuery.of(context).size.width*0.40,
+        height: 160,
         color: Color.fromARGB(255, 0, 114, 63), // Example color, adjust as needed
         // Add decoration if needed
         // decoration: BoxDecoration(
         //   borderRadius: BorderRadius.circular(10.0), // Adjust corner radius as needed
         // ),
 
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-           SvgPicture.asset(path),
-            const SizedBox(height: 8.0), // Add spacing
-            Text(text1, style: text1Style),
-            const SizedBox(height: 4.0), // Add spacing
-            Text(text2, style: text2Style),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(top: 16.0,bottom: 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+             SvgPicture.asset(path),
+              const SizedBox(height: 8.0), // Add spacing
+              Text(text1, style: text1Style),
+              const SizedBox(height: 4.0), // Add spacing
+              Text(text2, style: text2Style),
+            ],
+          ),
         ),
       )
       ),

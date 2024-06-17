@@ -16,6 +16,7 @@ import 'package:chamber_of_commerce/widgets/SearchFieldBusiness.dart';
 import 'package:chamber_of_commerce/widgets/business_top_list.dart';
 import 'package:chamber_of_commerce/widgets/expandedPanel%20_usefull_address.dart';
 import 'package:chamber_of_commerce/widgets/expandedPanel.dart';
+import 'package:chamber_of_commerce/widgets/expandedPanelUsefulAddressBusiness.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,22 +36,7 @@ class UseFullAddressBusiness extends StatefulWidget {
 class _UseFullAddressBusinessState extends State<UseFullAddressBusiness> {
    Stream<DatabaseEvent>? _userStream;
   // final Map data = widget.businessCompanyProfile[""];
-   final List<dynamic> data = [
-    
-     "High Office",
-     "Ministry",
-     "Addis Ababa City Administration",
-     "Corporation and Enterprise",
-     "Agency",
-     "Authority",
-     "Institutes",
-     "Business Associations",
-     "Deplomatic Mission in Ethiopia",
-     "Ethiopian Deplomatic Mission Ab",
-     "International and Regional Orga",
-     "Regional Chamber of Commerce",
-
-   ];
+  
   @override
   void initState() {
     super.initState();
@@ -217,10 +203,32 @@ class _UseFullAddressBusinessState extends State<UseFullAddressBusiness> {
   }
 
   final data = snapshot.data!.snapshot.value as List<dynamic>;
+//   final List<dynamic> data = [
+//       {
+//    "category":"High Office",     
+//   "title":"new",
+// "tel": "+251-115261717"
+//   },
+//   ];
   // print(data.length);
   if (data.length == 0) {
     return const Center(child: Text('No businesses found'));
   }
+// final  resultMap =  <List<String, dynamic>>[];
+
+// for (final businessData in data) {
+//   if (businessData is Map<String, dynamic>) {
+//     // Extract key-value pairs (assuming all keys are strings)
+//     final keyList = businessData.keys.toList().cast<String>();
+//     final valueList = businessData.values.toList();
+
+//     // Add the key-value pair lists to the result map
+//     resultMap.add([keyList, valueList]);
+//   } else {
+//     // Handle unexpected data types (optional)
+//     print("Warning: Unexpected data type in snapshot");
+//   }
+// }
   //based on the index categorize Field Of Business
     // index = 0;
      
@@ -249,7 +257,8 @@ class _UseFullAddressBusinessState extends State<UseFullAddressBusiness> {
      
        
         
-         return  ExpandedPanelUseFullAddress(data:data ,);
+         return ExpandedPanelUsefullAddressBusiness(data: data,clickable: true,);
+          //  ExpandedPanelUseFullAddress(data:data ,);
          
         //  ListView.builder(
           

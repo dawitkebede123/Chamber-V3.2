@@ -195,143 +195,58 @@ class Almanac extends StatelessWidget {
         centerTitle: true,
       ),
     
+      body: 
+         NestedScrollView(
+             headerSliverBuilder:(context, innerChildOverscrollIndicator)=> [
+           const SliverAppBar(
+            automaticallyImplyLeading: false,
+            collapsedHeight: 300,
+            expandedHeight: 300,
+            flexibleSpace: Padding(
+              padding: EdgeInsets.only(left: 20.0,right: 20),
+              child: Logo_Adv_List_almanac(index: 1,),
+            ),
+                     )
+      ],
       body: Column(
         children: [
+          //slider
+          //  Padding(
+          //         padding: EdgeInsets.only(top:4, left: 20,right: 20,bottom: 16),
+          //         child:Container(
+          //      width: MediaQuery.of(context).size.width * 0.9,
+          //     height: 126,
+          //     decoration: BoxDecoration(
+          //            border: Border.all(
+          //          color: Color.fromARGB(255,229,234,232), // Set border color
+          //          width: 1.0,
+          //        ),
+          //       color: Color.fromARGB(255, 255, 255, 255),
+                   
+          //          borderRadius:BorderRadius.circular(20),),
+          //          child:
+                   
+          //          Column( 
+          //            mainAxisAlignment: MainAxisAlignment.center,
+          //            children: [
+          //    CarouselSlider.builder(itemCount: slideImages.length, itemBuilder:(context,index,realIndex){
+          //     final urlImage = slideImages[index];
+          //     return buildImage(urlImage,index);
+          //    }, options: CarouselOptions(height: 100,autoPlay: true))
+                   
+          //          ],)
+          //            // child:SvgPicture.asset('assets/images/Adv_slider.svg'),
+          //   ),),
           
-          Padding(
-            padding: const EdgeInsets.only(top: 4.0,left: 20,right: 20,bottom: 16),
-            child: Column( 
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //image carousel
-                        //  CarouselSlider.builder(itemCount: slideImages.length, itemBuilder:(context,index,realIndex){
-                        //   final urlImage = slideImages[index];
-                        //   return buildImage(urlImage,index);
-                        //  }, options: CarouselOptions(height: 100,autoPlay: true))
-                        
-                       Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: Container(
-                          height: 200,
-                           child: Logo_Adv_List_almanac(index: 1)
-                          //  GridView.builder(
-                          //        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          //          crossAxisCount: 3, // Change to adjust the number of columns
-                          //          crossAxisSpacing: 10.0, // Spacing between columns
-                          //          mainAxisSpacing: 20.0, // Spacing between rows
-                          //          childAspectRatio: 1.2, // Adjust aspect ratio for desired layout
-                          //        ),
-                          //        itemCount: slideImages.length,
-                          //        itemBuilder: (context, index) {
-                          //          final Map<dynamic, dynamic> businessData = data[index];
-                          //          final String icon = businessData['logo'].toString();
-                          //          final String name = businessData['name'].toString();
-                          //          // Future<String> imageUrlFuture = storeImageInFirebase(icon);
-                          //          // final String name = businessData["Account Name"].toString();
-                          //       return GestureDetector(
-                          //          onTap: () => Navigator.push(
-                          // context,
-                          // MaterialPageRoute(builder: (context) => CompanyDescription(detail: businessData)),
-                          //          ),
-                          //          child: Column(
-                          // children: [
-                          //   Container(
-                          //     width: 60.0,
-                          //     height: 60.0,
-                          //     decoration: BoxDecoration(
-                          //       color: Colors.white,
-                          //       border: Border.all(
-                          //         color: Color.fromARGB(255, 229, 234, 232),
-                          //       ),
-                          //       // ... other decoration for the container
-                          //     ),
-                          //     child: Image.asset(icon)
-                          //   ),
-                          //   // SizedBox(width: 20.0),
-                          //   Padding(
-                          //     padding: const EdgeInsets.only(top: 8.0),
-                          //     child: Text(
-                          //       name,
-                          //       style: TextStyle(fontSize: 12),
-                          //       textAlign: TextAlign.left,
-                          //       maxLines: 1,
-                          //       overflow: TextOverflow.ellipsis,
-                          //     ),
-                          //   ),
-                          // ],
-                          //          ),
-                          //        );
-                          //        }),
-                         ),
-                       ),
-            
-            
-            
-            ],),
-          ),
-           const Padding(
+            const Padding(
                 padding: EdgeInsets.only(left: 20.0,right: 20,bottom: 16),
                 child: SearchFieldAlmanac(),
               ),
-        // SizedBox(height: 20,),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0,right: 20,bottom: 16),
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.9,
-              height: 146,//146
-              decoration: BoxDecoration(
-                    
-                color: Color.fromARGB(255, 255, 255, 255),
-                border: Border.all(
-                  color: const Color.fromARGB(255,229,234,232),
-                ),
-                  borderRadius:BorderRadius.circular(20), // Set border width
-            
-              ),
-            
-            //about almanac
-            child: Padding(padding:EdgeInsets.only(left: 20,right: 20,top: 0,bottom: 16),
-             child:  ListView(children:  [
-              // Row(children: [
-                SizedBox(height: 20,),
-                 const Text("About Financial Almanac", style: TextStyle(fontWeight: FontWeight.bold),),
-              
-               Text("The financial landscape in Ethiopia is witnessing a significant transformation"),
-               Row(
-                 children: [
-                  Spacer(),
-                   TextButton(
-                         onPressed: () {
-                            Navigator.push(
-                    context,
-                     TransparentRoute(
-                   
-                    page:  AboutAlmanac(),
-                                 ),
-                                 );
-                           // Add functionality for button press
-                     },
-                         child: Text('Read more'),
-                       ),
-                 ],
-               ),
-              // ]
-              
-              // ),
-                       ],),)
-            
-            
-                    
-            ),
-          ),
-          
-       Expanded(
-         child: Padding(
-          
-                     padding: const EdgeInsets.only(left: 20.0,right: 20,top: 0),
-                     child: SizedBox(
-                      height: 30,
-                       child: GridView.builder(
+           Expanded(
+             child: Padding(
+               padding: const EdgeInsets.only(left: 20.0,right: 20),
+               child:
+               GridView.builder(
                                itemCount: categories.length,
                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                  crossAxisCount: 3, // Number of columns
@@ -379,38 +294,40 @@ class Almanac extends StatelessWidget {
                                  );
                                },
                              ),
-                     ),
-                   ),
-       ),
 
-       
-         
-                   
+
+
+             ),
+           ),
+        
+      
+      
+      
+         ]
+       )), 
+           // Define scrollable grid
           
-
-
-        ],
-      ),
+                                
+  
+         
+       
           bottomNavigationBar:const CustomeButtomNavBar(index: 3,),
 
 
+     
     );
     return scaffold;
+
+    
   }
-Widget buildImage(String urlImage,int index)=>
+// List<String> get _filteredItems => title
+//       .where((item) => item.toLowerCase().startsWith(_query))
+//       .toList();
+
+ Widget buildImage(String urlImage,int index)=>
           Container(
                  margin: EdgeInsets.symmetric(horizontal:5),
                  child:Image.asset(urlImage,fit: BoxFit.cover,),
-          );
-//  Widget _buildCard(String item) {
-//     return Container(
-//       height: 126,
-//       child: Padding(
-//         padding: const EdgeInsets.all(8.0),
-//         child: Center(
-//           child: Text(item),
-//         ),
-//       ),
-//     );
-//   }
+          ); 
+
 }

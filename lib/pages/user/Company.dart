@@ -8,6 +8,7 @@ import 'package:chamber_of_commerce/pages/user/Almanac_Options/Insurance_Options
 import 'package:chamber_of_commerce/pages/user/Almanac_Options/MicroFinance_Options.dart';
 import 'package:chamber_of_commerce/pages/user/Almanac_Options/Capital_Goods_Options.dart';
 import 'package:chamber_of_commerce/widgets/ContactTemplete.dart';
+import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:chamber_of_commerce/pages/user/Home.dart';
 import 'package:chamber_of_commerce/widgets/BottomNavBar.dart';
@@ -58,7 +59,7 @@ class _CompanyState extends State<Company> {
         backgroundColor: Theme.of(context).colorScheme.background,
          leading: IconButton(
           
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed:()=>{
             if(sector == 'Bank'){
               Navigator.push(
@@ -133,7 +134,7 @@ class _CompanyState extends State<Company> {
         ),
        //should be replace by botton
      actions: [
-          Padding(padding: EdgeInsets.only(right: 20),
+          Padding(padding: const EdgeInsets.only(right: 20),
          child:  SvgPicture.asset('assets/images/chamber_icon.svg')
           ,),
          
@@ -142,195 +143,201 @@ class _CompanyState extends State<Company> {
         centerTitle: true,
       ),
       
-      body: ListView(
-       children: [ 
-         Padding(
-           padding: const EdgeInsets.only(left: 20.0,right: 20,top: 4),
-           child: Container(
-            width: MediaQuery.of(context).size.width*0.8,
-             alignment: Alignment.center,
-               height: 126,
-                         //             padding: EdgeInsets.only(
-                         //  left: MediaQuery.of(context).size.width * 0.01,
-                         //                //  right: MediaQuery.of(context).size.width * 0.1, // 10% of screen width
-                         //  top: MediaQuery.of(context).size.height * 0.05,
-                         //   // 5% of screen height 
-                         //      ),
-             decoration: BoxDecoration(
-                        border: Border.all(
-           color: Color.fromARGB(255,229,234,232), // Set border color
-           width: 1.0,
-                        ),
-           borderRadius:BorderRadius.circular(20), // Set border width
-                    
-                      ),  
-                     child: Padding(
-                       padding: const EdgeInsets.only(top: 4.0),
-                       child: Column(
-                         children: [
-                             Image.asset(logo,
-                                      width:MediaQuery.of(context).size.width * 0.20,
-                                      ),
-                           Text(name,
-              style:  TextStyle(
-                    fontSize: 16, // Increase font size for heading-like appearance
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary // Make the text bold
-                ),)
-                         ],
-                       ),
-                     )
-                       
-                     
+      body:  const ValueListenableBuilder(
+        valueListenable: ValueListenable: Hive.box('favorites').listenable(),
+        builder:(context,value,child){
+
+        return ListView(
+         children: [ 
           
-                      ),
-         ),
-        // Container(
-        // child:Text("Almanac / Bank / Awash Bank ")
-
-        // ),
-        SizedBox(height: 20,),
-        if(video!="")
-       Container(
-          height: 200,
-        decoration: BoxDecoration(borderRadius:BorderRadius.circular(20)),
-       child: Padding(padding: EdgeInsets.all(30),
-       child:Center(
-          child:Image.asset(video)
-        ))
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20,right: 20,bottom: 16),
-          child: Container(
-           child:Image.asset(image),
-          ),
-        ),
+           Padding(
+             padding: const EdgeInsets.only(left: 20.0,right: 20,top: 4),
+             child: Container(
+              width: MediaQuery.of(context).size.width*0.8,
+               alignment: Alignment.center,
+                 height: 126,
+                           //             padding: EdgeInsets.only(
+                           //  left: MediaQuery.of(context).size.width * 0.01,
+                           //                //  right: MediaQuery.of(context).size.width * 0.1, // 10% of screen width
+                           //  top: MediaQuery.of(context).size.height * 0.05,
+                           //   // 5% of screen height 
+                           //      ),
+               decoration: BoxDecoration(
+                          border: Border.all(
+             color: Color.fromARGB(255,229,234,232), // Set border color
+             width: 1.0,
+                          ),
+             borderRadius:BorderRadius.circular(20), // Set border width
+                      
+                        ),  
+                       child: Padding(
+                         padding: const EdgeInsets.only(top: 4.0),
+                         child: Column(
+                           children: [
+                               Image.asset(logo,
+                                        width:MediaQuery.of(context).size.width * 0.20,
+                                        ),
+                             Text(name,
+                style:  TextStyle(
+                      fontSize: 16, // Increase font size for heading-like appearance
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary // Make the text bold
+                  ),)
+                           ],
+                         ),
+                       )
+                         
+                       
+            
+                        ),
+           ),
+          // Container(
+          // child:Text("Almanac / Bank / Awash Bank ")
+        
+          // ),
+          SizedBox(height: 20,),
+          if(video!="")
          Container(
-                    width: 200,
-
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20,right: 20,bottom: 24),
-                      child: Container(child: Text(profile,textAlign: TextAlign.justify,style: TextStyle(fontSize: 14,color: Theme.of(context).colorScheme.primary))),
-                    )),
-                   ContactTemeplete(tel: tel,website:website,email: email,)      
-                      //    if(tel !="")
-                      //  Padding(
-                      //    padding: const EdgeInsets.only(left: 20.0,right: 20),
-                      //    child: 
-                      //    Row(
-                      //      children: [
-                      //        InkWell( // Wrap the content in an InkWell
-                      //                       onTap: () {
-                      //                         launch('tel:$tel'); // Launch the phone dialer with the number
-                      //                       },
-                      //       child: Row(
-                      //          children: [
-                      //             Container(
-                      //              // width: 20,
-                      //              // height: 20,
-                      //              decoration: BoxDecoration(
+            height: 200,
+          decoration: BoxDecoration(borderRadius:BorderRadius.circular(20)),
+         child: Padding(padding: EdgeInsets.all(30),
+         child:Center(
+            child:Image.asset(video)
+          ))
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20,right: 20,bottom: 16),
+            child: Container(
+             child:Image.asset(image),
+            ),
+          ),
+           Container(
+                      width: 200,
+        
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20,right: 20,bottom: 24),
+                        child: Container(child: Text(profile,textAlign: TextAlign.justify,style: TextStyle(fontSize: 14,color: Theme.of(context).colorScheme.primary))),
+                      )),
+                     ContactTemeplete(tel: tel,website:website,email: email,)      
+                        //    if(tel !="")
+                        //  Padding(
+                        //    padding: const EdgeInsets.only(left: 20.0,right: 20),
+                        //    child: 
+                        //    Row(
+                        //      children: [
+                        //        InkWell( // Wrap the content in an InkWell
+                        //                       onTap: () {
+                        //                         launch('tel:$tel'); // Launch the phone dialer with the number
+                        //                       },
+                        //       child: Row(
+                        //          children: [
+                        //             Container(
+                        //              // width: 20,
+                        //              // height: 20,
+                        //              decoration: BoxDecoration(
+                           
+                        //        color: Color.fromARGB(255, 255, 255, 255),
+                                              
+                        //                       borderRadius:BorderRadius.circular(999), // Set border width
+                                              
+                        //                         ),
+                        //              child: SvgPicture.asset('assets/images/vector1.svg',width: 10,height: 10,)),
+                        //            SizedBox(width: 10,),
+                        //            Text(tel,softWrap: true,overflow: TextOverflow.ellipsis,style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                        //          ],
+                        //        ),),
+                        //      ],
+                        //    ),
+                        //  ),
+                        //  const SizedBox(height: 5,),
+                        
+                        //   if(website !=null)
+                        //  Padding(
+                        //    padding: const EdgeInsets.only(left: 20.0,right: 20),
+                        //    child: Row(
+                        //    children: [
+                        //     InkWell( // Wrap the content in an InkWell
+                        //        onTap: () {
+                        //          // ignore: deprecated_member_use
+                        //          launch(website); // Launch the URL in a web browser
+                        //                       },
+                        //      child:Row(
+                        //      children: [
+                        //         Container(
+                        //          // width: 20,
+                        //          // height: 20,
+                        //          decoration: BoxDecoration(
+                           
+                        //        color: Color.fromARGB(255, 255, 255, 255),
+                                              
+                        //                       borderRadius:BorderRadius.circular(999), // Set border width
+                                              
+                        //                         ),
+                        //          child: SvgPicture.asset('assets/images/vector.svg',width: 10,height: 10,)),
+                        //        SizedBox(width: 10,),
+                        //        Text(website,softWrap: true,overflow: TextOverflow.ellipsis,style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                        //      ],
+                        //    )),],),
+                        //  ),
+                        //   SizedBox(height: 5,),
+                        
+                        //   if(fax !="")
                          
-                      //        color: Color.fromARGB(255, 255, 255, 255),
-                                            
-                      //                       borderRadius:BorderRadius.circular(999), // Set border width
-                                            
-                      //                         ),
-                      //              child: SvgPicture.asset('assets/images/vector1.svg',width: 10,height: 10,)),
-                      //            SizedBox(width: 10,),
-                      //            Text(tel,softWrap: true,overflow: TextOverflow.ellipsis,style: TextStyle(color: Theme.of(context).colorScheme.primary)),
-                      //          ],
-                      //        ),),
-                      //      ],
-                      //    ),
-                      //  ),
-                      //  const SizedBox(height: 5,),
-                      
-                      //   if(website !=null)
-                      //  Padding(
-                      //    padding: const EdgeInsets.only(left: 20.0,right: 20),
-                      //    child: Row(
-                      //    children: [
-                      //     InkWell( // Wrap the content in an InkWell
-                      //        onTap: () {
-                      //          // ignore: deprecated_member_use
-                      //          launch(website); // Launch the URL in a web browser
-                      //                       },
-                      //      child:Row(
-                      //      children: [
-                      //         Container(
-                      //          // width: 20,
-                      //          // height: 20,
-                      //          decoration: BoxDecoration(
+                        //  Padding(
+                        //    padding: const EdgeInsets.only(left: 20.0,right: 20),
+                        //    child: Row(
+                        //      children: [
+                        //         Container(
+                        //          // width: 10,
+                        //          // height: 10,
+                        //          decoration: BoxDecoration(
+                           
+                        //        color: Color.fromARGB(255, 255, 255, 255),
+                                              
+                        //                       borderRadius:BorderRadius.circular(999), // Set border width
+                                              
+                        //                         ),
+                        //          child: SvgPicture.asset('assets/images/vector3.svg',width: 10,height: 10,)),
+                        //        SizedBox(width: 10,),
+                        //        Text(fax,softWrap: true,overflow: TextOverflow.ellipsis,style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                        //      ],
+                        //    ),
+                        //  ),
+                        //   SizedBox(height: 5,),
+                        //    if(email !="")
+                        
+                        //  Padding(
+                        //    padding: const EdgeInsets.only(left: 20.0,right: 20),
+                        //    child: Row(
+                        //                         children: [
+                        //    InkWell( // Wrap the content in an InkWell
+                        //                       onTap: () {
+                        //                         launch('mailto:$email'); // Launch email app with recipient
+                        //                       },
+                        //                       child: Row(
+                        //      children: [
+                        //         Container(
+                        //          // width: 20,
+                        //          // height: 20,
+                        //          decoration: BoxDecoration(
+                           
+                        //        color: Color.fromARGB(255, 255, 255, 255),
+                                              
+                        //                       borderRadius:BorderRadius.circular(999), // Set border width
+                                              
+                        //                         ),
+                        //          child: SvgPicture.asset('assets/images/vector2.svg',width: 10,height: 10,)),
+                        //         SizedBox(width: 10,),
+                        //        Text(email,softWrap: true,overflow: TextOverflow.ellipsis,style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                        //      ],
+                          //  ),)]),
+                        //  ),
+        
                          
-                      //        color: Color.fromARGB(255, 255, 255, 255),
-                                            
-                      //                       borderRadius:BorderRadius.circular(999), // Set border width
-                                            
-                      //                         ),
-                      //          child: SvgPicture.asset('assets/images/vector.svg',width: 10,height: 10,)),
-                      //        SizedBox(width: 10,),
-                      //        Text(website,softWrap: true,overflow: TextOverflow.ellipsis,style: TextStyle(color: Theme.of(context).colorScheme.primary)),
-                      //      ],
-                      //    )),],),
-                      //  ),
-                      //   SizedBox(height: 5,),
-                      
-                      //   if(fax !="")
-                       
-                      //  Padding(
-                      //    padding: const EdgeInsets.only(left: 20.0,right: 20),
-                      //    child: Row(
-                      //      children: [
-                      //         Container(
-                      //          // width: 10,
-                      //          // height: 10,
-                      //          decoration: BoxDecoration(
-                         
-                      //        color: Color.fromARGB(255, 255, 255, 255),
-                                            
-                      //                       borderRadius:BorderRadius.circular(999), // Set border width
-                                            
-                      //                         ),
-                      //          child: SvgPicture.asset('assets/images/vector3.svg',width: 10,height: 10,)),
-                      //        SizedBox(width: 10,),
-                      //        Text(fax,softWrap: true,overflow: TextOverflow.ellipsis,style: TextStyle(color: Theme.of(context).colorScheme.primary)),
-                      //      ],
-                      //    ),
-                      //  ),
-                      //   SizedBox(height: 5,),
-                      //    if(email !="")
-                      
-                      //  Padding(
-                      //    padding: const EdgeInsets.only(left: 20.0,right: 20),
-                      //    child: Row(
-                      //                         children: [
-                      //    InkWell( // Wrap the content in an InkWell
-                      //                       onTap: () {
-                      //                         launch('mailto:$email'); // Launch email app with recipient
-                      //                       },
-                      //                       child: Row(
-                      //      children: [
-                      //         Container(
-                      //          // width: 20,
-                      //          // height: 20,
-                      //          decoration: BoxDecoration(
-                         
-                      //        color: Color.fromARGB(255, 255, 255, 255),
-                                            
-                      //                       borderRadius:BorderRadius.circular(999), // Set border width
-                                            
-                      //                         ),
-                      //          child: SvgPicture.asset('assets/images/vector2.svg',width: 10,height: 10,)),
-                      //         SizedBox(width: 10,),
-                      //        Text(email,softWrap: true,overflow: TextOverflow.ellipsis,style: TextStyle(color: Theme.of(context).colorScheme.primary),),
-                      //      ],
-                        //  ),)]),
-                      //  ),
-
-                       
-                //  SizedBox(height: 10,),
-                 
-       ]), 
+                  //  SizedBox(height: 10,),
+                   
+         ]),}
+      ), 
         
         //  bottomNavigationBar:const CustomeButtomNavBar(index: 3,),
   
