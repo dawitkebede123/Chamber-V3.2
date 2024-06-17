@@ -1,5 +1,8 @@
 // import 'dart:js';
 
+
+import 'package:chamber_of_commerce/Models/favoriteItem.dart';
+import 'package:chamber_of_commerce/checkFavorite.dart';
 import 'package:chamber_of_commerce/pages/user/Almanac.dart';
 import 'package:chamber_of_commerce/pages/user/Almanac_Options/Bank_Options.dart';
 import 'package:chamber_of_commerce/pages/user/Almanac_Options/SavingAndCredit.dart';
@@ -7,8 +10,10 @@ import 'package:chamber_of_commerce/pages/user/Almanac_Options/Fintech_Options.d
 import 'package:chamber_of_commerce/pages/user/Almanac_Options/Insurance_Options.dart';
 import 'package:chamber_of_commerce/pages/user/Almanac_Options/MicroFinance_Options.dart';
 import 'package:chamber_of_commerce/pages/user/Almanac_Options/Capital_Goods_Options.dart';
+import 'package:chamber_of_commerce/theme/MyFavoritesProvider.dart';
 import 'package:chamber_of_commerce/widgets/ContactTemplete.dart';
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:chamber_of_commerce/pages/user/Home.dart';
 import 'package:chamber_of_commerce/widgets/BottomNavBar.dart';
@@ -19,7 +24,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:chamber_of_commerce/widgets/VideoPlayer.dart';
 import 'package:share_plus/share_plus.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
 
 class Company extends StatefulWidget {
   final Map<dynamic, dynamic> detail;
@@ -32,6 +37,8 @@ class Company extends StatefulWidget {
 class _CompanyState extends State<Company> {
   @override
   Widget build(BuildContext context) {
+     final provider = Provider.of<FavoriteListProvider>(context);
+
     String sector = widget.detail["sector"].toString();
     String  name =widget.detail["name"].toString();
     String logo = widget.detail["logo"].toString();
@@ -40,9 +47,9 @@ class _CompanyState extends State<Company> {
     String video = widget.detail["adv_video"];
     String tel = widget.detail["tel"].toString();
     String email = widget.detail["email"].toString();
-    
     final website = widget.detail["website"];
-    String fax = widget.detail["fax"].toString();
+    // String fax = widget.detail["fax"].toString();
+    final arg= FavoriteItem(sector: sector,name: name,logo: logo,profile: profile,image: image, video: video,tel: tel,email: email,website: website);
     var scaffold = Scaffold(
       //  drawer:const BackButton(
       //   //  backgroundColor: Colors.white,
@@ -143,10 +150,14 @@ class _CompanyState extends State<Company> {
         centerTitle: true,
       ),
       
-      body:  const ValueListenableBuilder(
-        valueListenable: ValueListenable: Hive.box('favorites').listenable(),
-        builder:(context,value,child){
-
+      body:  ValueListenableBuilder(
+        valueListenable: Hive.box('newFavorites').listenable(),
+        builder:(context,box,child){
+        // final isFavorite = provider.isFavorite(widget.detail.);
+        // final isFavorite =
+        //  checkFavoriteExists(name, FavoriteItem)
+               final isFavorite = provider.isFavorite(name);
+          // print(isFavorite);
         return ListView(
          children: [ 
           
@@ -195,7 +206,46 @@ class _CompanyState extends State<Company> {
           // child:Text("Almanac / Bank / Awash Bank ")
         
           // ),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0,right: 20),
+            child: Row(children: [
+              Spacer(),
+              IconButton(onPressed: () async{
+                ScaffoldMessenger.of(context).clearSnackBars();
+                // if(isFavorite){
+                //   //  Provider.of<ThemeProvider>(context,listen: false).toggleTheme(),
+                //  provider.removeFromFavorites(arg);
+                //   // provider.removeFromFavorites
+                //   // box.delete(name);
+            
+                //  const snackBar = SnackBar(content: Text('Remove successfully'),
+                // backgroundColor: Colors.blue,
+            
+                // );
+                // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  
+                // }
+                // else{
+                provider.addToFavorites(arg);
+            
+                // await box.put(name,video);
+                const snackBar = SnackBar(content: Text('added successfully'),
+                backgroundColor: Colors.red,
+                
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                // }
+               
+              },
+              
+               icon:  Icon(
+               isFavorite?  Icons.favorite:Icons.favorite_border,
+               color: Colors.red,))
+            ],),
+          ),
           SizedBox(height: 20,),
+
           if(video!="")
          Container(
             height: 200,
@@ -218,7 +268,7 @@ class _CompanyState extends State<Company> {
                         padding: const EdgeInsets.only(left: 20,right: 20,bottom: 24),
                         child: Container(child: Text(profile,textAlign: TextAlign.justify,style: TextStyle(fontSize: 14,color: Theme.of(context).colorScheme.primary))),
                       )),
-                     ContactTemeplete(tel: tel,website:website,email: email,)      
+                     ContactTemeplete(tel: tel,email: email,)      
                         //    if(tel !="")
                         //  Padding(
                         //    padding: const EdgeInsets.only(left: 20.0,right: 20),
@@ -336,7 +386,7 @@ class _CompanyState extends State<Company> {
                          
                   //  SizedBox(height: 10,),
                    
-         ]),}
+         ]);}
       ), 
         
         //  bottomNavigationBar:const CustomeButtomNavBar(index: 3,),

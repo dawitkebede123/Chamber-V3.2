@@ -103,8 +103,9 @@ class CompanyState extends State<CompanyDetail> {
           //     Text(tel),
           //   ],
           // ),
+          
           SizedBox(height: 5,),
-        
+            
                 if(tel !="")
                      Row(
                        children: [

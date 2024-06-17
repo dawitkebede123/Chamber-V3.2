@@ -37,7 +37,7 @@ class _CustomeButtomNavBarState extends State<CustomeButtomNavBar> {
               );
             },
              child:Container(
-             width:MediaQuery.of(context).size.width*0.333,
+             width:MediaQuery.of(context).size.width*0.2,
 
         child:Column(children: [
          SvgPicture.asset('assets/images/home.svg',color:widget.index==0? Color.fromARGB(255,253,184,19):Color.fromARGB(255, 255, 255, 255)),
@@ -99,7 +99,7 @@ class _CustomeButtomNavBarState extends State<CustomeButtomNavBar> {
               );
             },
             child:  Container(
-            width:MediaQuery.of(context).size.width*0.33,
+            width:MediaQuery.of(context).size.width*0.2,
           child: Column(
               children: [
           SvgPicture.asset('assets/images/almanac_small.svg',height: 23,color:widget.index==3? Color.fromARGB(255,253,184,19):Color.fromARGB(255, 255, 255, 255)),
@@ -108,24 +108,27 @@ class _CustomeButtomNavBarState extends State<CustomeButtomNavBar> {
             )
            ),
           ),
-         
-        //     GestureDetector(
-        //     onTap: (){
-        //         Navigator.push(
-        //         context,
-        //         MaterialPageRoute(builder: (context) => Favorite()),
-        //       );
-        //     },
-        //     child:  Container(
-        //     width:MediaQuery.of(context).size.width*0.2,
-        //  child:Column(
-        //       children: [
-        //    SvgPicture.asset('assets/images/favorite.svg',color:widget.index==4? Color.fromARGB(255,253,184,19):Color.fromARGB(255, 255, 255, 255)),  
-        //         Text("Favorite",style:  TextStyle(color:widget.index==4? Color.fromARGB(255,253,184,19):Color.fromARGB(255, 255, 255, 255) ),)
-        //       ],
-        //     )
-        //   ),
-        //   )
+           SizedBox(width: 10,),
+            GestureDetector(
+            onTap: (){
+                Navigator.push(
+                context,
+                TransparentRoute(
+               
+                page:  Favorite(),
+              ),
+              );
+            },
+            child:  Container(
+            width:MediaQuery.of(context).size.width*0.2,
+         child:Column(
+              children: [
+           SvgPicture.asset('assets/images/favorite.svg',color:widget.index==4? Color.fromARGB(255,253,184,19):Color.fromARGB(255, 255, 255, 255)),  
+                Text("Favorite",style:  TextStyle(color:widget.index==4? Color.fromARGB(255,253,184,19):Color.fromARGB(255, 255, 255, 255) ),)
+              ],
+            )
+          ),
+          )
         
          
 

@@ -41,7 +41,7 @@ class _Logo_Adv_List_almanacState extends State<Logo_Adv_List_almanac> {
        data = snapshot.snapshot.value as List<dynamic>;
       //  print(snapshot.snapshot.value);
       //  print(data);
-       data = data.where((element) => element["logo"]!="").toList();
+       data = data.where((element) => element['main_adv']== 'True').toList();
       // Define a map for filtering logic by index
       filteredBusinesses = data;
 

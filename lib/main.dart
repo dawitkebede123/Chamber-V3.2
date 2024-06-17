@@ -19,6 +19,7 @@ import 'package:chamber_of_commerce/widgets/expandedPanel.dart';
 import 'package:chamber_of_commerce/widgets/filterResult.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:chamber_of_commerce/theme/MyFavoritesProvider.dart';
 // import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,13 +27,22 @@ import 'package:provider/provider.dart';
 // Assuming you have initialized Firebase in your main function
 Future<void> main() async {
   await Hive.initFlutter();
-  await Hive.openBox('favorites');
+  await Hive.openBox('newFavorites');
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp( ChangeNotifierProvider(
-  create: (context) => ThemeProvider(), // Replace with your provider
-  child: 
-    MainApp()));
+  runApp(
+    MultiProvider(providers: [
+       ChangeNotifierProvider<FavoriteListProvider>(
+          create: (context) => FavoriteListProvider(),
+        ),
+        // Add other providers here
+       ChangeNotifierProvider<ThemeProvider>( // Replace with your provider class
+          create: (context) => ThemeProvider(),
+        ),
+    ],
+  //    ChangeNotifierProvider(
+  // create: (context) => ThemeProvider(), // Replace with your provider
+  child: const MainApp()));
 }
 
 class MainApp extends StatefulWidget {
@@ -50,7 +60,7 @@ class _MainAppState extends State<MainApp> {
     debugShowCheckedModeBanner: false,
     
     theme: Provider.of<ThemeProvider>(context).themeData,
-  
+     
       home:Home(),
      
      routes: routes,
