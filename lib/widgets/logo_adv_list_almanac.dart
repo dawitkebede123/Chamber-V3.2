@@ -127,11 +127,11 @@ for (final element in filteredBusinesses) {
               Container(
                 width: 60.0,
                 height: 60.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(
-                    color: Color.fromARGB(255, 229, 234, 232),
-                  ),
+                  // border: Border.all(
+                  //   color: Color.fromARGB(255, 229, 234, 232),
+                  // ),
                   // ... other decoration for the container
                 ),
                 child: FutureBuilder<String>(

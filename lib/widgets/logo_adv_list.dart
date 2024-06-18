@@ -109,7 +109,7 @@ scrollDirection: Axis.horizontal,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // Change to adjust the number of columns
         crossAxisSpacing: 10.0, // Spacing between columns
-        mainAxisSpacing: 20.0, // Spacing between rows
+        mainAxisSpacing: 10.0, // Spacing between rows
         childAspectRatio: 1.2, // Adjust aspect ratio for desired layout
       ),
       itemCount: uniqueBusinesses.length,
@@ -129,11 +129,11 @@ scrollDirection: Axis.horizontal,
               Container(
                 width: 60.0,
                 height: 60.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(
-                    color: Color.fromARGB(255, 229, 234, 232),
-                  ),
+                  // border: Border.all(
+                  //   color: Color.fromARGB(255, 229, 234, 232),
+                  // ),
                   // ... other decoration for the container
                 ),
                 child: FutureBuilder<String>(

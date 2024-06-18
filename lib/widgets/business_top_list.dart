@@ -222,9 +222,10 @@ for (final element in filteredBusinesses) {
       height: 300,
       child: 
      GridView.count(
-  crossAxisCount: 3, // Adjust the number of columns as needed
+      scrollDirection: Axis.horizontal,
+  crossAxisCount: 2, // Adjust the number of columns as needed
   childAspectRatio: 1.2, // Adjust the aspect ratio of each grid item (optional)
-  mainAxisSpacing: 20.0, // Adjust spacing between rows (optional)
+  mainAxisSpacing: 10.0, // Adjust spacing between rows (optional)
   crossAxisSpacing: 10.0, // Adjust spacing between columns (optional)
   children: List.generate(uniqueBusinesses.length, (index) {
     final Map<dynamic, dynamic> businessData = uniqueBusinesses[index];
@@ -265,12 +266,12 @@ for (final element in filteredBusinesses) {
               Container(
                 width: 60, // Allow full width for image container
                 height: 60.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   // ... decoration for the container
                   color: Colors.white,
-                  border: Border.all(
-                    color: Colors.black,
-                  ),
+                  // border: Border.all(
+                  //   color: Colors.black,
+                  // ),
                 ),
                 // if()
                 child: FutureBuilder<String>(
